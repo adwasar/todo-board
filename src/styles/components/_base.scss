@@ -1,11 +1,24 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  font-family: $font-family-primary;
 }
 
 ul {
-  list-style: none;
+  margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: $font-size-medium;
+  font-weight: $font-weight-bold;
 }
 
 .board {
@@ -19,6 +32,10 @@ ul {
   width: 280px;
   border: 1px solid black;
   height: max-content;
+
+  &__title {
+    padding: 8px;
+  }
 
   &__cards {
     display: flex;
