@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import List from './components/List'
-import { columns } from './data'
+import { columns as initialColumns } from './data'
 import './styles/main.scss'
 
 function App() {
+  const [columns, setColumns] = useState(initialColumns)
+
+  const addColumn = () => {
+    setColumns([...columns, { title: 'Новая колонка', cards: [] }])
+  }
+
   return (
     <div className="board">
       {columns.map((column, i) => (
         <List column={column} i={i} />
       ))}
       <div className="list list_add">
-        <h2>+ Добавить лист</h2>
+        <h2 onClick={addColumn}>+ Добавить лист</h2>
       </div>
     </div>
   )
