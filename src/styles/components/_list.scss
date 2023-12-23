@@ -1,0 +1,29 @@
+.list {
+  padding: 8px;
+  width: 280px;
+  border: 1px solid black;
+  height: max-content;
+
+  &__title {
+    padding: 8px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__card {
+    padding: 8px;
+    border: 1px solid black;
+  }
+
+  &__card_add {
+    border: 1px dashed black;
+  }
+}
+
+.list_add {
+  border: 1px dashed black;
+}
