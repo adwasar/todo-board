@@ -7,8 +7,10 @@ import './styles/main.scss'
 function App() {
   const [columns, setColumns] = useState(initialColumns)
 
+  const newList = { title: 'Новая колонка', cards: [] }
+
   const addColumn = () => {
-    setColumns([...columns, { title: 'Новая колонка', cards: [] }])
+    setColumns([...columns, newList])
   }
 
   return (
