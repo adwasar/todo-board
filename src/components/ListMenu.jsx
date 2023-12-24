@@ -1,15 +1,4 @@
-import { useContext } from 'react'
-
-import DataContext from '../context'
-
-function ListMenu({ menuRef, column, closeMenu, renameTitle }) {
-  const dataContext = useContext(DataContext)
-
-  const deleteList = () => {
-    dataContext.setColumns(dataContext.columns.filter((el) => el.id !== column.id))
-    closeMenu()
-  }
-
+function ListMenu({ menuRef, renameTitle, deleteList }) {
   return (
     <>
       <ul ref={menuRef} className="list-menu">

@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import Card from './Card'
 import ListMenu from './ListMenu'
 
-function List({ column }) {
+function List({ column, columns, setColumns }) {
   const [cards, setCards] = useState(column.cards)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [titleName, setTitleName] = useState(column.title)
@@ -30,7 +30,11 @@ function List({ column }) {
   const renameTitle = () => {
     setIsEditedTitle(false)
     closeMenu()
-    console.log(inputTitleRef.current)
+  }
+
+  const deleteList = () => {
+    setColumns(columns.filter((el) => el.id !== column.id))
+    closeMenu()
   }
 
   const handleClickOutside = (e) => {
@@ -45,6 +49,11 @@ function List({ column }) {
       inputTitleRef.current.blur()
     }
   }
+
+  useEffect(() => {
+    setCards(column.cards)
+    setTitleName(column.title)
+  }, [column])
 
   useEffect(() => {
     if (menuIsOpen) {
@@ -93,6 +102,7 @@ function List({ column }) {
             closeMenu={closeMenu}
             setIsEditedTitle={setIsEditedTitle}
             renameTitle={renameTitle}
+            deleteList={deleteList}
           />
         ) : null}
       </div>

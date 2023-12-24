@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 import List from './components/List'
 import { columns as initialColumns } from './data'
-import DataContext from './context'
 import './styles/main.scss'
 
 function App() {
@@ -14,19 +13,15 @@ function App() {
     setColumns([...columns, newList])
   }
 
-  const dataContext = { columns, setColumns }
-
   return (
-    <DataContext.Provider value={dataContext}>
-      <div className="board">
-        {columns.map((column, i) => (
-          <List column={column} key={i} />
-        ))}
-        <div className="list list_add">
-          <h2 onClick={addColumn}>+ Добавить лист</h2>
-        </div>
+    <div className="board">
+      {columns.map((column, i) => (
+        <List column={column} columns={columns} setColumns={setColumns} key={i} />
+      ))}
+      <div className="list list_add">
+        <h2 onClick={addColumn}>+ Добавить лист</h2>
       </div>
-    </DataContext.Provider>
+    </div>
   )
 }
 
