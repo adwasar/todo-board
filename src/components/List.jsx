@@ -7,6 +7,7 @@ function List({ column }) {
   const [cards, setCards] = useState(column.cards)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const menuIconRef = useRef(null)
+  const menuRef = useRef(null)
 
   const newCard = 'Новая карточка'
 
@@ -23,7 +24,7 @@ function List({ column }) {
   }
 
   const handleClickOutside = (e) => {
-    if (menuIconRef.current !== e.target) {
+    if (!menuIconRef.current.contains(e.target) && !menuRef.current.contains(e.target)) {
       closeMenu()
     }
   }
@@ -47,7 +48,8 @@ function List({ column }) {
           <span className="list-menu-icon__dot"></span>
           <span className="list-menu-icon__dot"></span>
         </div>
-        {menuIsOpen ? <ListMenu /> : null}
+
+        {menuIsOpen ? <ListMenu menuRef={menuRef} column={column} closeMenu={closeMenu} /> : null}
       </div>
       <ul className="list__cards">
         {cards.map((card, j) => {
