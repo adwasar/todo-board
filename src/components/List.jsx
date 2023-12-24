@@ -11,6 +11,7 @@ function List({ column }) {
 
   const menuIconRef = useRef(null)
   const menuRef = useRef(null)
+  const inputTitleRef = useRef(null)
 
   const newCard = 'Новая карточка'
 
@@ -26,9 +27,22 @@ function List({ column }) {
     setMenuIsOpen(false)
   }
 
+  const renameTitle = () => {
+    setIsEditedTitle(false)
+    closeMenu()
+    console.log(inputTitleRef.current)
+  }
+
   const handleClickOutside = (e) => {
     if (!menuIconRef.current.contains(e.target) && !menuRef.current.contains(e.target)) {
       closeMenu()
+    }
+  }
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !isEditedTitle) {
+      setIsEditedTitle(true)
+      inputTitleRef.current.blur()
     }
   }
 
@@ -41,6 +55,12 @@ function List({ column }) {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [menuIsOpen])
+
+  useEffect(() => {
+    if (!isEditedTitle && inputTitleRef.current) {
+      inputTitleRef.current.focus()
+    }
+  }, [isEditedTitle])
 
   return (
     <div className="list">
@@ -55,6 +75,8 @@ function List({ column }) {
               value={titleName}
               onChange={(e) => setTitleName(e.target.value)}
               onBlur={() => setIsEditedTitle(true)}
+              onKeyDown={handleKeyPress}
+              ref={inputTitleRef}
             />
           )}
         </h2>
@@ -70,6 +92,7 @@ function List({ column }) {
             column={column}
             closeMenu={closeMenu}
             setIsEditedTitle={setIsEditedTitle}
+            renameTitle={renameTitle}
           />
         ) : null}
       </div>
