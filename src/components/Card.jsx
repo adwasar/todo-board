@@ -1,9 +1,7 @@
-function Card({ card, j }) {
+function Card({ card }) {
   return (
     <>
-      <li className="list__card" key={j}>
-        {card}
-      </li>
+      <li className="list__card">{card}</li>
     </>
   )
 }

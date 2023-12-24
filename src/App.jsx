@@ -14,7 +14,7 @@ function App() {
   return (
     <div className="board">
       {columns.map((column, i) => (
-        <List column={column} i={i} />
+        <List column={column} key={i} />
       ))}
       <div className="list list_add">
         <h2 onClick={addColumn}>+ Добавить лист</h2>
