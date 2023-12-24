@@ -2,6 +2,8 @@ body {
   margin: 0;
   box-sizing: border-box;
   font-family: $font-family-primary;
+  color: $white;
+  background: linear-gradient(180deg, rgb(45, 84, 151), rgb(19, 19, 39));
 }
 
 ul {
@@ -25,5 +27,20 @@ h6 {
   display: flex;
   padding: 20px;
   gap: 12px;
-  overflow: scroll;
+  overflow: auto;
+  min-height: calc(100vh - 40px);
+
+  &::-webkit-scrollbar {
+    height: 14px;
+  }
+
+  &::-webkit-scrollbar-track {
+    padding: 2px;
+    background-color: rgba(16, 18, 4, 0.3);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $white;
+    border-radius: 7px;
+  }
 }

@@ -1,8 +1,9 @@
 .list {
   padding: 8px;
   flex: 0 0 280px;
-  border: 1px solid black;
   height: max-content;
+  background-color: $black;
+  border-radius: 12px;
   cursor: pointer;
 
   &__header {
@@ -21,27 +22,32 @@
 
   &__card {
     padding: 8px;
-    border: 1px solid black;
+    border: 1px solid $white;
+    border-radius: 8px;
   }
 
   &__card_add {
-    border: 1px dashed black;
+    border: 1px dashed $white;
   }
 }
 
 .list_add {
-  border: 1px dashed black;
+  color: #fff;
+  background-color: $grey;
 }
 
 .menu-icon {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 8px;
   width: 22px;
+  height: 22px;
 
   &__dot {
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background-color: black;
+    background-color: $white;
   }
 }
