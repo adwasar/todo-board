@@ -1,0 +1,17 @@
+.list-menu {
+  position: absolute;
+  padding: 8px 4px;
+  right: 0;
+  top: 52px;
+  background-color: #282e33;
+  border-radius: 12px;
+
+  &__item {
+    border-radius: 8px;
+    padding: 8px;
+
+    &:hover {
+      background-color: #465059;
+    }
+  }
+}

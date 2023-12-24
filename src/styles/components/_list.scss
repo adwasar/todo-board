@@ -8,6 +8,7 @@
 
   &__header {
     display: flex;
+    position: relative;
     padding: 8px;
     margin-bottom: 8px;
     justify-content: space-between;
@@ -36,13 +37,22 @@
   background-color: $grey;
 }
 
-.menu-icon {
+.list-menu-icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px;
+  border-radius: 8px;
   width: 22px;
   height: 22px;
+
+  &:hover {
+    background-color: #9fadbc;
+
+    .list-menu-icon__dot {
+      background-color: black;
+    }
+  }
 
   &__dot {
     width: 4px;

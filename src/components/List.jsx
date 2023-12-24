@@ -1,8 +1,12 @@
+import { useState, useEffect, useRef } from 'react'
+
 import Card from './Card'
-import { useState } from 'react'
+import ListMenu from './ListMenu'
 
 function List({ column }) {
   const [cards, setCards] = useState(column.cards)
+  const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const menuIconRef = useRef(null)
 
   const newCard = 'Новая карточка'
 
@@ -10,15 +14,40 @@ function List({ column }) {
     setCards([...cards, newCard])
   }
 
+  const toggleMenu = () => {
+    setMenuIsOpen(!menuIsOpen)
+  }
+
+  const closeMenu = () => {
+    setMenuIsOpen(false)
+  }
+
+  const handleClickOutside = (e) => {
+    if (menuIconRef.current !== e.target) {
+      closeMenu()
+    }
+  }
+
+  useEffect(() => {
+    if (menuIsOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [menuIsOpen])
+
   return (
     <div className="list">
       <div className="list__header">
         <h2 className="list__title">{column.title}</h2>
-        <div class="menu-icon">
-          <span className="menu-icon__dot"></span>
-          <span className="menu-icon__dot"></span>
-          <span className="menu-icon__dot"></span>
+        <div onClick={toggleMenu} ref={menuIconRef} className="list-menu-icon">
+          <span className="list-menu-icon__dot"></span>
+          <span className="list-menu-icon__dot"></span>
+          <span className="list-menu-icon__dot"></span>
         </div>
+        {menuIsOpen ? <ListMenu /> : null}
       </div>
       <ul className="list__cards">
         {cards.map((card, j) => {

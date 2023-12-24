@@ -13,6 +13,8 @@ function App() {
     setColumns([...columns, newList])
   }
 
+  const dataContext = { newList }
+
   return (
     <div className="board">
       {columns.map((column, i) => (
