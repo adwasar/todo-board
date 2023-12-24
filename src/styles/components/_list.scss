@@ -5,9 +5,12 @@
   height: max-content;
   cursor: pointer;
 
-  &__title {
+  &__header {
+    display: flex;
     padding: 8px;
     margin-bottom: 8px;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__cards {
@@ -28,4 +31,17 @@
 
 .list_add {
   border: 1px dashed black;
+}
+
+.menu-icon {
+  display: flex;
+  justify-content: space-between;
+  width: 22px;
+
+  &__dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: black;
+  }
 }

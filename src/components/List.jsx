@@ -12,7 +12,14 @@ function List({ column }) {
 
   return (
     <div className="list">
-      <h2 className="list__title">{column.title}</h2>
+      <div className="list__header">
+        <h2 className="list__title">{column.title}</h2>
+        <div class="menu-icon">
+          <span className="menu-icon__dot"></span>
+          <span className="menu-icon__dot"></span>
+          <span className="menu-icon__dot"></span>
+        </div>
+      </div>
       <ul className="list__cards">
         {cards.map((card, j) => {
           return <Card card={card} key={j} />
