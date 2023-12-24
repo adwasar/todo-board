@@ -6,6 +6,9 @@ import ListMenu from './ListMenu'
 function List({ column }) {
   const [cards, setCards] = useState(column.cards)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [titleName, setTitleName] = useState(column.title)
+  const [isEditedTitle, setIsEditedTitle] = useState(true)
+
   const menuIconRef = useRef(null)
   const menuRef = useRef(null)
 
@@ -42,14 +45,33 @@ function List({ column }) {
   return (
     <div className="list">
       <div className="list__header">
-        <h2 className="list__title">{column.title}</h2>
+        <h2 className="list__title">
+          {isEditedTitle ? (
+            titleName
+          ) : (
+            <input
+              type="text"
+              className="list__title-input"
+              value={titleName}
+              onChange={(e) => setTitleName(e.target.value)}
+              onBlur={() => setIsEditedTitle(true)}
+            />
+          )}
+        </h2>
         <div onClick={toggleMenu} ref={menuIconRef} className="list-menu-icon">
           <span className="list-menu-icon__dot"></span>
           <span className="list-menu-icon__dot"></span>
           <span className="list-menu-icon__dot"></span>
         </div>
 
-        {menuIsOpen ? <ListMenu menuRef={menuRef} column={column} closeMenu={closeMenu} /> : null}
+        {menuIsOpen ? (
+          <ListMenu
+            menuRef={menuRef}
+            column={column}
+            closeMenu={closeMenu}
+            setIsEditedTitle={setIsEditedTitle}
+          />
+        ) : null}
       </div>
       <ul className="list__cards">
         {cards.map((card, j) => {

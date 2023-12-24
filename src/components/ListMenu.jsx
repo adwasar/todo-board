@@ -2,11 +2,16 @@ import { useContext } from 'react'
 
 import DataContext from '../context'
 
-function ListMenu({ menuRef, column, closeMenu }) {
+function ListMenu({ menuRef, column, closeMenu, setIsEditedTitle }) {
   const dataContext = useContext(DataContext)
 
   const deleteList = () => {
     dataContext.setColumns(dataContext.columns.filter((el) => el.id !== column.id))
+    closeMenu()
+  }
+
+  const renameTitle = () => {
+    setIsEditedTitle(false)
     closeMenu()
   }
 
@@ -16,7 +21,9 @@ function ListMenu({ menuRef, column, closeMenu }) {
         <li onClick={deleteList} className="list-menu__item">
           Удалить колонку
         </li>
-        <li className="list-menu__item">Редактировать</li>
+        <li onClick={renameTitle} className="list-menu__item">
+          Редактировать
+        </li>
       </ul>
     </>
   )
