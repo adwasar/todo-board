@@ -1,10 +1,13 @@
-.list-menu {
+.list-menu,
+.card-menu {
+  color: $white;
   position: absolute;
   padding: 8px 4px;
   right: 0;
   top: 52px;
   background-color: #282e33;
   border-radius: 12px;
+  z-index: 50;
 
   &__item {
     border-radius: 8px;

@@ -35,42 +35,36 @@
   }
 
   &__card {
-    padding: 8px;
+    position: relative;
     border: 1px solid $white;
     border-radius: 8px;
+
+    &:hover {
+      border-color: $grey;
+      background-color: $grey;
+      color: $black;
+
+      .arrow__ll,
+      .arrow__rr {
+        background-color: $black;
+      }
+    }
+  }
+
+  &__card-content {
+    display: flex;
+    padding: 8px;
+    height: 100%;
+    justify-content: space-between;
   }
 
   &__card_add {
     border: 1px dashed $white;
+    padding: 8px;
   }
 }
 
 .list_add {
   color: #fff;
   background-color: $grey;
-}
-
-.list-menu-icon {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px;
-  border-radius: 8px;
-  width: 22px;
-  height: 22px;
-
-  &:hover {
-    background-color: #9fadbc;
-
-    .list-menu-icon__dot {
-      background-color: black;
-    }
-  }
-
-  &__dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: $white;
-  }
 }

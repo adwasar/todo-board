@@ -18,8 +18,8 @@ function App() {
       {columns.map((column, i) => (
         <List column={column} columns={columns} setColumns={setColumns} key={i} />
       ))}
-      <div className="list list_add">
-        <h2 onClick={addColumn}>+ Добавить лист</h2>
+      <div onClick={addColumn} className="list list_add">
+        <h2>+ Добавить лист</h2>
       </div>
     </div>
   )
