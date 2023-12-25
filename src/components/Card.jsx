@@ -20,7 +20,6 @@ function Card({ card }) {
     if (!cardMenuRef.current.contains(e.target) && !cardRef.current.contains(e.target)) {
       closeMenu()
     }
-    // console.log(cardMenuRef.current.contains(e.target))
   }
 
   useEffect(() => {

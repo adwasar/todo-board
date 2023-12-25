@@ -7,12 +7,14 @@
   cursor: pointer;
 
   &__header {
-    display: flex;
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
     padding: 8px;
     margin-bottom: 8px;
-    justify-content: space-between;
     align-items: center;
+    min-height: 40px;
   }
 
   &__title-input {
@@ -65,6 +67,17 @@
 }
 
 .list_add {
-  color: #fff;
-  background-color: $grey;
+  .list__header {
+    margin-bottom: 0px;
+    border: 1px dashed $white;
+
+    &:hover {
+      border: none;
+    }
+  }
+
+  &:hover {
+    background-color: $grey;
+    color: $black;
+  }
 }

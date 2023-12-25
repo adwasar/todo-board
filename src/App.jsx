@@ -19,7 +19,9 @@ function App() {
         <List column={column} columns={columns} setColumns={setColumns} key={i} />
       ))}
       <div onClick={addColumn} className="list list_add">
-        <h2>+ Добавить лист</h2>
+        <div className="list__header">
+          <h2 className="list__title">+ Добавить лист</h2>
+        </div>
       </div>
     </div>
   )
