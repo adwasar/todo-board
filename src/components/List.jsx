@@ -105,7 +105,9 @@ function List({ column, columns, setColumns }) {
       </div>
       <ul className="list__cards">
         {cards.map((card, j) => {
-          return <Card card={card} deleteCard={deleteCard} key={j} />
+          return (
+            <Card card={card} deleteCard={deleteCard} key={j} setCards={setCards} cards={cards} />
+          )
         })}
         <li onClick={addCard} className="list__card list__card_add">
           + Добавить карточку

@@ -17,7 +17,8 @@
     min-height: 40px;
   }
 
-  &__title-input {
+  &__title-input,
+  &__card-input {
     padding: 0;
     border: none;
     background-color: $black;
@@ -28,6 +29,11 @@
     &:focus {
       outline: none;
     }
+  }
+
+  &__card-input {
+    padding: 2px;
+    font-weight: $font-weight-medium;
   }
 
   &__cards {
