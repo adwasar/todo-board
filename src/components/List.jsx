@@ -13,10 +13,14 @@ function List({ column, columns, setColumns }) {
   const menuRef = useRef(null)
   const inputTitleRef = useRef(null)
 
-  const newCard = 'Новая карточка'
+  const newCard = { title: 'Новая карточка', id: new Date().getTime() }
 
   const addCard = () => {
     setCards([...cards, newCard])
+  }
+
+  const deleteCard = (card) => {
+    setCards(cards.filter((el) => el.id !== card.id))
   }
 
   const toggleMenu = () => {
@@ -96,19 +100,12 @@ function List({ column, columns, setColumns }) {
         </div>
 
         {menuIsOpen ? (
-          <ListMenu
-            menuRef={menuRef}
-            column={column}
-            closeMenu={closeMenu}
-            setIsEditedTitle={setIsEditedTitle}
-            renameTitle={renameTitle}
-            deleteList={deleteList}
-          />
+          <ListMenu menuRef={menuRef} renameTitle={renameTitle} deleteList={deleteList} />
         ) : null}
       </div>
       <ul className="list__cards">
         {cards.map((card, j) => {
-          return <Card card={card} key={j} />
+          return <Card card={card} deleteCard={deleteCard} key={j} />
         })}
         <li onClick={addCard} className="list__card list__card_add">
           + Добавить карточку
