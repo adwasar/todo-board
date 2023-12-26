@@ -1,16 +1,24 @@
 export const columns = [
   {
-    title: 'Сделать',
+    title: 'Дизайн',
     cards: [
-      { title: 'Разработка', done: false, id: 1 },
-      { title: 'Тестирование', done: true, id: 2 },
+      { title: 'Лендинг', done: false, id: 1 },
+      { title: 'Корзина', done: false, id: 2 },
+      { title: 'Навигация', done: false, id: 3 },
     ],
     id: 1,
   },
-  { title: 'В процессе', cards: [{ title: 'Дизайн', done: false, id: 3 }], id: 2 },
   {
-    title: 'Выполнено',
-    cards: [{ title: 'Бизнес логика', done: false, id: 4 }],
+    title: 'Разработка',
+    cards: [
+      { title: 'Модальное окно', done: false, id: 4 },
+      { title: 'Локализация', done: false, id: 5 },
+    ],
+    id: 2,
+  },
+  {
+    title: 'Тестирование',
+    cards: [{ title: 'Переходы по ссылкам', done: false, id: 5 }],
     id: 3,
   },
 ]
