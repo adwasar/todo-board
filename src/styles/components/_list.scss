@@ -62,9 +62,10 @@
 
   &__card-content {
     display: flex;
-    padding: 8px;
+    // padding: 8px;
     height: 100%;
     justify-content: space-between;
+    animation: card 0.4s ease-out forwards;
   }
 
   &__card_add {
@@ -95,5 +96,14 @@
   }
   to {
     flex: 0 0 280px;
+  }
+}
+
+@keyframes card {
+  from {
+    padding: 0 8px;
+  }
+  to {
+    padding: 8px;
   }
 }
