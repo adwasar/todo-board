@@ -13,7 +13,7 @@ function List({ column, columns, setColumns }) {
   const menuRef = useRef(null)
   const inputTitleRef = useRef(null)
 
-  const newCard = { title: 'Новая карточка', id: new Date().getTime() }
+  const newCard = { title: 'Новая карточка', done: false, id: new Date().getTime() }
 
   const addCard = () => {
     setCards([...cards, newCard])

@@ -1,15 +1,23 @@
-function ListMenu({ cardMenuRef, deleteCard, card, closeMenu, setIsEditedTitle }) {
+function ListMenu({
+  cardMenuRef,
+  deleteCard,
+  card,
+  closeMenu,
+  setIsEditedTitle,
+  doneStatus,
+  setDoneStatus,
+}) {
   return (
     <>
       <ul ref={cardMenuRef} className="card-menu">
         <li
           onClick={() => {
-            deleteCard(card)
+            setDoneStatus(!doneStatus)
             closeMenu()
           }}
           className="card-menu__item"
         >
-          Удалить карточку
+          Переключить статус "выполнено"
         </li>
         <li
           onClick={() => {
@@ -19,6 +27,15 @@ function ListMenu({ cardMenuRef, deleteCard, card, closeMenu, setIsEditedTitle }
           className="card-menu__item"
         >
           Редактировать
+        </li>
+        <li
+          onClick={() => {
+            deleteCard(card)
+            closeMenu()
+          }}
+          className="card-menu__item"
+        >
+          Удалить карточку
         </li>
       </ul>
     </>

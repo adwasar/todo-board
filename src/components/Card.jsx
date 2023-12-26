@@ -6,6 +6,7 @@ function Card({ card, deleteCard, setCards, cards }) {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [titleName, setTitleName] = useState(card.title)
   const [isEditedTitle, setIsEditedTitle] = useState(true)
+  const [doneStatus, setDoneStatus] = useState(false)
 
   const cardMenuRef = useRef(null)
   const cardRef = useRef(null)
@@ -43,6 +44,10 @@ function Card({ card, deleteCard, setCards, cards }) {
   }, [titleName])
 
   useEffect(() => {
+    setCards(cards.map((el) => (el.id === card.id ? { ...el, done: doneStatus } : el)))
+  }, [doneStatus])
+
+  useEffect(() => {
     if (menuIsOpen) {
       document.addEventListener('mousedown', handleClickOutside)
     }
@@ -55,7 +60,11 @@ function Card({ card, deleteCard, setCards, cards }) {
   return (
     <>
       <li className="list__card">
-        <div className="list__card-content" ref={cardRef} onClick={toggleMenu}>
+        <div
+          className={`list__card-content ${card.done ? 'list__card-content_done' : null}`}
+          ref={cardRef}
+          onClick={toggleMenu}
+        >
           {isEditedTitle ? (
             card.title
           ) : (
@@ -81,6 +90,8 @@ function Card({ card, deleteCard, setCards, cards }) {
             card={card}
             closeMenu={closeMenu}
             setIsEditedTitle={setIsEditedTitle}
+            setDoneStatus={setDoneStatus}
+            doneStatus={doneStatus}
           />
         ) : null}
       </li>
