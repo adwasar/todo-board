@@ -1,9 +1,17 @@
 import { useState, useEffect, useRef } from 'react'
+import { useDispatch } from 'react-redux'
 
+import {
+  deleteList as deleteListStore,
+  setTitleName as setTitleNameStore,
+  addCard as addCardStore,
+} from '../store/slices/columnsSlice'
 import Card from './Card'
 import ListMenu from './ListMenu'
 
-function List({ column, columns, setColumns }) {
+function List({ column }) {
+  const dispatch = useDispatch()
+
   const [cards, setCards] = useState(column.cards)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [titleName, setTitleName] = useState(column.title)
@@ -37,7 +45,7 @@ function List({ column, columns, setColumns }) {
   }
 
   const deleteList = () => {
-    setColumns(columns.filter((el) => el.id !== column.id))
+    dispatch(deleteListStore(column.id))
     closeMenu()
   }
 
@@ -74,6 +82,14 @@ function List({ column, columns, setColumns }) {
       inputTitleRef.current.focus()
     }
   }, [isEditedTitle])
+
+  useEffect(() => {
+    dispatch(setTitleNameStore({ columnId: column.id, newTitle: titleName }))
+  }, [isEditedTitle])
+
+  useEffect(() => {
+    dispatch(addCardStore({ columnId: column.id, cards: cards }))
+  }, [cards])
 
   return (
     <div className="list">

@@ -1,22 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { addList } from './store/slices/columnsSlice'
 
 import List from './components/List'
 import { columns as initialColumns } from './data'
 import './styles/main.scss'
 
 function App() {
-  const [columns, setColumns] = useState(initialColumns)
-
-  const newList = { title: 'Новая колонка', cards: [], id: new Date().getTime() }
+  const columnsStore = useSelector((state) => state.columns.value)
+  const dispatch = useDispatch()
 
   const addColumn = () => {
-    setColumns([...columns, newList])
+    dispatch(addList())
   }
+
+  useEffect(() => {
+    console.log(columnsStore)
+  }, [columnsStore])
 
   return (
     <div className="board">
-      {columns.map((column, i) => (
-        <List column={column} columns={columns} setColumns={setColumns} key={i} />
+      {columnsStore.map((column, i) => (
+        <List column={column} key={i} />
       ))}
       <div onClick={addColumn} className="list list_add">
         <div className="list__header">
