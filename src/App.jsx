@@ -25,7 +25,7 @@ function App() {
       ))}
       <div onClick={addColumn} className="list list_add">
         <div className="list__header">
-          <h2 className="list__title">+ Добавить лист</h2>
+          <h2 className="list__title">+ Добавить колонку</h2>
         </div>
       </div>
     </div>
