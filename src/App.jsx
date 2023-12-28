@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addList } from './store/slices/columnsSlice'
+import { addList } from './redux/slices/columnsSlice'
 
 import List from './components/List'
-import { columns as initialColumns } from './data'
+
 import './styles/main.scss'
 
 function App() {
@@ -13,10 +13,6 @@ function App() {
   const addColumn = () => {
     dispatch(addList())
   }
-
-  useEffect(() => {
-    console.log(columnsStore)
-  }, [columnsStore])
 
   return (
     <div className="board">

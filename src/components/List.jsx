@@ -5,7 +5,7 @@ import {
   deleteList as deleteListStore,
   setTitleName as setTitleNameStore,
   addCard as addCardStore,
-} from '../store/slices/columnsSlice'
+} from '../redux/slices/columnsSlice'
 import Card from './Card'
 import ListMenu from './ListMenu'
 
